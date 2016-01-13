@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>ASCII Camera</title>
+	<link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+	<div class="body">
+		<div class="buttons">
+			<a href="#" class="button green" id="startbtn">Start Camera</a>&nbsp;
+	    	<a href="#" class="button red" id="stopbtn" style="display:none;">Stop Camera</a>
+		</div>
+
+		<div id="asciiContainer">
+			<!-- The ascii art comes in the pre tag below -->
+			<pre id="asciiText"></pre>
+		</div>	
+	</div>
+    <div style="display:none;">
+		<video id="cam" autoplay></video>
+	</div>
+	<script src="js/asciicam.js"></script>
+</body>
+</html>
