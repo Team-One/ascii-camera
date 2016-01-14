@@ -5,6 +5,9 @@
 	    loopSpeed = 100,
 	    width = 160,
 	    height = 120;
+	    var charString = "$$$$$$@@@@@@@B%8&WM#ZO0QLCJUYXzcvunxrjft/|()1{}[]?-_+~<>i!lI;:,^`'........          "
+	    var charArray = charString.split("")
+
 
     app.init = function () {
 		//Get all the page element we need
@@ -35,9 +38,10 @@
 						cam.src = window.URL.createObjectURL(stream) || stream;
 					//}
 					cam.play();
-					intervalId = setInterval(app.loop, loopSpeed);
+					// intervalId = setInterval(app.loop, loopSpeed);
 					btnStart.style.display = "none";
 					btnStop.style.display = "inline-block";
+					app.loop()
 				},
 				function errorCallback(error) {
 					window.alert("An error ocurred getting user media. Code:" + error.code);
@@ -58,6 +62,11 @@
 		btnStart.style.display = "inline-block";
     };
 
+    app.findCharByColor = function(gray){
+    	var index = (charArray.length-1)-Math.floor((gray/255)*charArray.length)
+    	var char = charArray[index]
+    	return char
+    }
     //The generation of the ascii text was taken from this great sample from thecodeplayer:
     //http://thecodeplayer.com/walkthrough/cool-ascii-animation-using-an-image-sprite-canvas-and-javascript
     app.loop = function () {
@@ -88,28 +97,30 @@
 			gray = r * 0.2126 + g * 0.7152 + b * 0.0722;
 			//overwriting the colordata array with grayscale values
 			//colordata[i] = colordata[i+1] = colordata[i+2] = gray;
-			
+			character = app.findCharByColor(gray)
 			//text for ascii art.
 			//blackish = dense characters like "W", "@"
 			//whitish = light characters like "`", "."
-			if (gray > 250) {
-                character = " "; //almost white
-            } else if (gray > 230) {
-                character = "`";
-            } else if (gray > 200) {
-                character = ":";
-            } else if (gray > 175) {
-                character = "*";
-            } else if (gray > 150) {
-                character = "+";
-            } else if (gray > 125) {
-                character = "#";
-            } else if (gray > 50) {
-                character = "W";
-            } else {
-                character = "@"; //almost black
-            }
+			// if (gray > 250) {
+   //              character = " "; //almost white
+   //          } else if (gray > 230) {
+   //              character = "`";
+   //          } else if (gray > 200) {
+   //              character = ":";
+   //          } else if (gray > 175) {
+   //              character = "*";
+   //          } else if (gray > 150) {
+   //              character = "+";
+   //          } else if (gray > 125) {
+   //              character = "#";
+   //          } else if (gray > 50) {
+   //              character = "W";
+   //          } else {
+   //              character = "@"; //almost black
+   //          }
 			
+
+
 			//newlines and injection into dom
 			if (i !== 0 && (i / 4) % width === 0) {//if the pointer reaches end of pixel-line
 				ascii.appendChild(document.createTextNode(line));
@@ -121,6 +132,7 @@
 			
 			line += character;
 		}
+		window.requestAnimationFrame(app.loop)
     };
     
     app.init();
