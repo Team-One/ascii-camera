@@ -11,6 +11,13 @@
 			<a href="#" class="button green" id="startbtn">Start Camera</a>&nbsp;
 	    	<a href="#" class="button red" id="stopbtn" style="display:none;">Stop Camera</a>
 		</div>
+		<div class="select">
+			<label for="audioSource">Audio source: </label><select id="audioSource"></select>
+		</div>
+
+		<div class="select">
+			<label for="videoSource">Video source: </label><select id="videoSource"></select>
+		</div>
 
 		<div id="asciiContainer">
 			<!-- The ascii art comes in the pre tag below -->
@@ -21,5 +28,6 @@
 		<video id="cam" autoplay></video>
 	</div>
 	<script src="js/asciicam.js"></script>
+	<script src="js/cam.js"></script>
 </body>
 </html>

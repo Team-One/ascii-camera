@@ -23,44 +23,44 @@
         btnStop.addEventListener('click', app.stopCam);
     };
 
-    app.startCam = function (e) {
-		// Get specific vendor methods
-		navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
-		window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
+  //   app.startCam = function (e) {
+		// // Get specific vendor methods
+		// navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+		// window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
 
-		// If browser supports user media
-		if (navigator.getUserMedia) {
-			navigator.getUserMedia({video: true, toString: function () { return "video"; } },
-				function successCallback(stream) {
-					//if (navigator.getUserMedia === navigator.mozGetUserMedia) {
-					//	cam.src = stream;
-					//} else {
-						cam.src = window.URL.createObjectURL(stream) || stream;
-					//}
-					cam.play();
-					// intervalId = setInterval(app.loop, loopSpeed);
-					btnStart.style.display = "none";
-					btnStop.style.display = "inline-block";
-					app.loop()
-				},
-				function errorCallback(error) {
-					window.alert("An error ocurred getting user media. Code:" + error.code);
-				});
-		} else {
-			//Browser doesn't support user media
-			window.alert("Your browser does not support user media");
-		}
+		// // If browser supports user media
+		// if (navigator.getUserMedia) {
+		// 	navigator.getUserMedia({video: true, toString: function () { return "video"; } },
+		// 		function successCallback(stream) {
+		// 			//if (navigator.getUserMedia === navigator.mozGetUserMedia) {
+		// 			//	cam.src = stream;
+		// 			//} else {
+		// 				cam.src = window.URL.createObjectURL(stream) || stream;
+		// 			//}
+		// 			cam.play();
+		// 			// intervalId = setInterval(app.loop, loopSpeed);
+		// 			btnStart.style.display = "none";
+		// 			btnStop.style.display = "inline-block";
+		// 			app.loop()
+		// 		},
+		// 		function errorCallback(error) {
+		// 			window.alert("An error ocurred getting user media. Code:" + error.code);
+		// 		});
+		// } else {
+		// 	//Browser doesn't support user media
+		// 	window.alert("Your browser does not support user media");
+		// }
 
-		e.preventDefault();
-    };
+		// e.preventDefault();
+  //   };
 
-    app.stopCam = function (e) {
-		clearInterval(intervalId);
-		cam.src = "";
-		e.preventDefault();
-		btnStop.style.display = "none";
-		btnStart.style.display = "inline-block";
-    };
+  //   app.stopCam = function (e) {
+		// clearInterval(intervalId);
+		// cam.src = "";
+		// e.preventDefault();
+		// btnStop.style.display = "none";
+		// btnStart.style.display = "inline-block";
+  //   };
 
     app.findCharByColor = function(gray){
     	var index = (charArray.length-1)-Math.floor((gray/255)*charArray.length)
