@@ -11,8 +11,8 @@ a, a:visited {
 }
 
 .body {
-	width: 100%;
-	/*width: 980px;*/
+	/*width: 100%;*/
+	width: 980px;
 	margin: 0 auto;
 	background: white;
 }
@@ -27,10 +27,10 @@ a, a:visited {
 
 #asciiContainer {
 	background-color: #000;
-	width: 100%;
-	height: 100%;
-	/*width: 960px;
-	height: 100vh;*/
+	/*width: 100%;
+	height: 100%;*/
+	width: 960px;
+	height: 100vh;
 	/*padding: 10px;*/
 	/*-box-shadow: 5px 6px 21px rgba(0, 0, 0, 0.99);
     -moz-box-shadow: 5px 6px 21px rgba(0, 0, 0, 0.99);
@@ -46,8 +46,8 @@ a, a:visited {
 	margin: 0px;
 	font-size: x-small; 
 	line-height:100%;
-	/*width: 960px;*/
-	width: 100%;
+	width: 960px;
+	/*width: 100%;*/
 	height: auto;
 }
 
